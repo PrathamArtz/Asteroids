@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 57761476}
   - component: {fileID: 57761475}
   - component: {fileID: 57761477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7dd3554761b8064898bb60dfc5d0051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: -8394413375571401944, guid: b8f1bee721751d842a7a528540fded97, type: 3}
 --- !u!1 &147549952
 GameObject:
   m_ObjectHideFlags: 0
