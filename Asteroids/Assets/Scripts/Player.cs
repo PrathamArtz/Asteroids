@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private float playerSpeed = 3;
     private Rigidbody2D rb;
     private Camera cam;
+    private GameManager gameManager;
 
     Vector2 mousepos;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = GameObject.Find("Camera").GetComponent<Camera>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
 
@@ -42,5 +44,18 @@ public class Player : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, transform.position,transform.rotation);
         bullet.Projectile(mousepos);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Asteroid")
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0.0f;
+
+            gameObject.SetActive(false);
+
+            gameManager.PlayerDied();
+        }
     }
 }
