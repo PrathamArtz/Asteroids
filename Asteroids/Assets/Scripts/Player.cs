@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         float verticalInput = Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime;
 
-        rb.transform.Translate(Vector2.up * verticalInput);
+        transform.Translate(Vector2.up * verticalInput);
 
         mousepos = cam.ScreenToWorldPoint(Input.mousePosition);
 
