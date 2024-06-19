@@ -36,4 +36,28 @@ public class Asteroid : MonoBehaviour
         _rigidbody2D.AddForce(direction * speed);
         Destroy(gameObject, maxLifetime);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag=="Bullet")
+        {
+            if ((size * 0.5f) >= minsize)
+            {
+                CreateSplit();
+                CreateSplit();
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void CreateSplit()
+    {
+        Vector2 position = transform.position;
+        position += Random.insideUnitCircle * 0.5f;
+        Asteroid half = Instantiate(this, position, transform.rotation);
+        half.size = size * 0.5f;
+
+        half.SetTrajectory(Random.insideUnitCircle.normalized * speed);
+    }
 }
